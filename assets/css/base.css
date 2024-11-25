@@ -1,0 +1,285 @@
+/* ========================= IMPORTAÇÃO DE FONTE ========================= */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+/* ========================= VARIÁVEIS ROOT ========================= */
+:root {
+  --cor-principal: #88CBCB;
+  --cor-perigo: #ff7782;
+  --cor-sucesso: #34bb8e;
+  --cor-alerta: #ffbb55;
+  --cor-branca: #fff;
+  --cor-preta: #000;
+  --cor-fundo: #f6f6f9;
+  --cor-info-escura: #7d8da1;
+  --cor-info-clara: #dce1eb;
+  --cor-escura: #363949;
+  --cor-clara: rgba(132, 139, 200, 0.18);
+  --cor-primaria-variante: #111e88;
+  --cor-escura-variante: #677483;
+
+  --tamanho-fonte-gigante: 2rem;
+  --tamanho-fonte-enorme: 1.5rem;
+  --tamanho-fonte-grande: 1.25rem;
+  --tamanho-fonte-h1: 1.5rem;
+  --tamanho-fonte-h2: 1.25rem;
+  --tamanho-fonte-h3: 1rem;
+  --tamanho-fonte-normal: .938rem;
+  --tamanho-fonte-pequena: .813rem;
+  --tamanho-fonte-minuscula: .75rem;
+
+  --fonte-regular: 400;
+  --fonte-media: 500;
+  --fonte-semi-negrito: 600;
+  --fonte-negrito: 700;
+  --fonte-super-negrito: 900;
+
+  --border-radius-card: 2rem;
+  --border-radius-1: 0.4rem;
+  --border-radius-2: 0.8rem;
+  --border-radius-3: 1.2rem;
+
+  --padding-card: 1.8rem;
+  --padding-1: 1.2rem;
+
+  --box-shadow: 0 2rem 3rem var(var(--cor-clara));
+}
+
+/* ========================= VARIÁVEIS TEMA ESCURO ========================= */
+.dark-mode {
+  --cor-fundo: #181a1e;
+  --cor-branca: #202528;
+  --cor-preta: #fff;
+  --cor-escura: #edeffd;
+  --cor-escura-variante: #a3bdcc;
+  --cor-clara: rgba(0, 0, 0, 0.4);
+  --box-shadow: 0 2rem 3rem var(var(--cor-escura));
+}
+
+/* ========================= GERAL ========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  --color-hover: #88CBCB;
+  --transition: all 0.2s ease;
+}
+
+html, body {
+  overflow-x: hidden; /* Evita overflow horizontal */
+}
+
+/* ========================= SIDEBAR DA DASHBOARD ========================= */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 78px;
+  height: 100%;
+  background: var(--cor-branca);
+  padding: 8px 16px;
+  transition: var(--transition);
+}
+
+.sidebar.expand {
+  width: 250px;
+  transition: var(--transition);
+}
+
+.nav-header {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.nav-header .logo {
+  color: var(--cor-preta);
+  font-size: 23px;
+  font-weight: 600;
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.sidebar.expand .nav-header .logo {
+  opacity: 1;
+  transition: var(--transition);
+}
+
+.nav-header .btn-menu {
+  position: absolute;
+  color: var(--cor-preta);
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  font-size: 23px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.sidebar.expand .nav-header .btn-menu {
+  margin-right: 0;
+}
+
+.nav-links {
+  margin-top: 20px;
+  height: 100%;
+}
+
+.nav-links li {
+  position: relative;
+  margin: 8px 0;
+  list-style: none;
+}
+
+.nav-links span {
+  color: var(--cor-preta);
+  height: 50px;
+  min-width: 50px;
+  font-size: 23px;
+  text-align: center;
+  line-height: 50px;
+}
+
+.nav-links input {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--cor-preta);
+  outline: none;
+  height: 40px;
+  width: 50%;
+  border: none;
+  border-radius: 12px;
+  background: var(--cor-fundo);
+  padding: 0;
+}
+
+.sidebar.expand .nav-links input {
+  width: 100%;
+  padding: 0 20px 0 40px;
+}
+
+.nav-links li a {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  border-radius: 12px;
+  align-items: center;
+  text-decoration: none;
+  background: var(--cor-branca);
+}
+
+.nav-links li:hover a {
+  background: var(--color-hover);
+}
+
+.nav-links li:hover i {
+  color: var(--cor-branca);
+}
+
+.nav-links li a .title {
+  color: var(--cor-preta);
+  font-size: 15px;
+  font-weight: 400;
+  white-space: nowrap;
+  display: none;
+  transition: var(--transition);
+}
+
+.sidebar.expand .nav-links li a .title {
+  display: block;
+  transition: var(--transition);
+}
+
+.nav-links li:hover a .title {
+  color: var(--cor-branca);
+}
+
+.nav-links li .tooltip {
+  position: absolute;
+  top: -20px;
+  left: calc(100% + 15px);
+  z-index: 3;
+  background: var(--cor-branca);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  padding: 6px 14px;
+  color: var(--cor-preta);
+  font-size: 15px;
+  white-space: nowrap;
+  border-radius: 3px;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0s;
+}
+
+.sidebar li:hover .tooltip {
+  opacity: 1;
+  pointer-events: auto;
+  transition: var(--transition);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.sidebar.expand .tooltip {
+  display: none;
+}
+
+.nav-links .search-btn {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-25px);
+  font-size: 23px;
+  color: var(--cor-preta);
+  border-radius: 12px;
+  background: var(--cor-branca);
+  transition: var(--transition);
+}
+
+.sidebar.expand .nav-links .search-btn {
+  background: transparent;
+  transition: var(--transition);
+}
+
+.sidebar.expand .nav-links li:hover .search-btn {
+  color: var(--cor-preta);
+}
+
+.nav-links .search-btn:hover {
+  background: var(--color-hover);
+}
+
+.theme-wrapper {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  height: 60px;
+  width: 250px;
+  left: 10px;
+  padding: 8px 16px;
+}
+
+.theme-wrapper p {
+  font-size: 16px;
+  color: var(--cor-preta);
+  font-weight: 400;
+  display: none;
+  transition: var(--transition);
+}
+
+.sidebar.expand .theme-wrapper p {
+  display: block;
+}
+
+.theme-wrapper .theme-btn {
+  position: relative;
+  cursor: pointer;
+  color: var(--cor-preta);
+}
+
+.logo_cz {
+  width: 100%;
+  border-radius: .2rem;
+}

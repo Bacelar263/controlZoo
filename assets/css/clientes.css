@@ -1,0 +1,347 @@
+/* ========================= DASHBOARD ========================= */
+
+.home {
+  position: relative;
+  top: 0;
+  left: 78px;
+  width: calc(100% - 78px);
+  min-height: 100vh;
+  background: var(--cor-fundo);
+  z-index: 6;
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar.expand ~ .home {
+  left: 250px;
+  width: calc(100% - 250px);
+  transition: var(--transition);
+}
+
+/* ============================================ CLIENTES ============================================*/
+
+@media print {
+  .custom-table .table, .custom-table .table__body {
+    overflow: visible;
+    height: auto !important;
+    width: auto !important;
+  }
+}
+
+.custom-table .table {
+  width: calc(100% - 78px);
+  min-height: 100vh;
+  background-color: var(--cor-branca);
+  backdrop-filter: blur(7px);
+  box-shadow: 10px 10px 12px hsla(220, 68%, 12%, .1) !important;
+  border-radius: var(--border-radius-card);
+  overflow: hidden;
+}
+
+
+
+.custom-table .table__header {
+  width: calc(100% - 78px);
+  height: 10%;
+  margin: .8rem auto;
+  background-color: var(--cor-fundo);
+  padding: .8rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.custom-table .table__header h1 {
+    font-size: 1.8rem;
+    color: var(--cor-preta);
+}
+
+.tabela_clientes thead {
+  border-bottom: 1px solid var(--cor-preta);
+}
+
+.custom-table .table__header .input-group {
+  width: 35%;
+  height: 100%;
+  background-color: var(--cor-branca);
+  padding: 0 .8rem;
+  border-radius: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: .2s;
+}
+
+.custom-table .table__header .input-group:hover {
+  width: 45%;
+  background-color: var(--cor-branca);
+  box-shadow: 0 .1rem .4rem #0002;
+}
+
+.custom-table .table__header .input-group span {
+  width: 1.2rem;
+  height: 1.2rem;
+  color: var(--cor-preta);
+}
+
+.custom-table .table__header .input-group input {
+  width: 100%;
+  padding: .5rem .5rem .5rem .3rem;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+.custom-table .table__header .input-group input::placeholder {
+  color: var(--cor-preta);
+}
+
+.custom-table .table__body {
+  width: 95%;
+  max-height: calc(89% - 1.6rem);
+  background-color: var(--cor-branca);
+  margin: .8rem auto;
+  border-radius: .6rem;
+  overflow: auto;
+  overflow: overlay;
+}
+
+.custom-table .table__body::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.5rem;
+}
+
+.custom-table .table__body::-webkit-scrollbar-thumb {
+  border-radius: .5rem;
+  background-color: #0004;
+  visibility: hidden;
+}
+
+.custom-table .table__body:hover::-webkit-scrollbar-thumb {
+  visibility: visible;
+}
+
+.custom-table table {
+  width: 100%;
+}
+
+.custom-table td  {
+  color: var(--cor-preta) !important;
+}
+
+.tabela_clientes tbody tr td {
+  border-bottom: 1px solid var(--cor-preta);
+}
+
+.custom-table table, th, td {
+  border-collapse: collapse;
+  padding: 1rem;
+  text-align: left;
+  color: var(--cor-preta);
+}
+
+.custom-table thead {
+  box-shadow: 0 -5px 15 px rgba(0, 0, 0, 0.3);
+}
+
+.custom-table thead th {
+  position: sticky;
+  top: 0;
+  left: 0;
+  background-color: var(--cor-branca);
+  cursor: pointer;
+  text-transform: capitalize;
+}
+
+.custom-table tbody tr:nth-child(even) {
+  background-color: #0000000b;
+}
+
+.custom-table tbody tr {
+  --delay: .1s;
+  transition: .5s ease-in-out var(--delay), background-color 0s;
+}
+
+.custom-table tbody tr.hide {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+/* .custom-table tbody tr:hover {
+  background-color: var(--cor-escura) !important;
+} */
+
+.custom-table tbody tr td,
+.custom-table tbody tr td p,
+.custom-table tbody tr td img {
+  transition: .2s ease-in-out;
+}
+
+.custom-table tbody tr.hide td,
+.custom-table tbody tr.hide td p {
+  padding: 0;
+  font: 0 / 0 sans-serif;
+  transition: .2s ease-in-out .5s;
+}
+
+.custom-table tbody tr.hide td img {
+  width: 0;
+  height: 0;
+  transition: .2s ease-in-out .5s;
+}
+
+.custom-table .status {
+  padding: .4rem 0;
+  border-radius: 2rem;
+  text-align: center;
+}
+
+.custom-table .status.delivered {
+  background-color: #86e49d;
+  color: #006b21;
+}
+
+.custom-table .status.cancelled {
+  background-color: #d893a3;
+  color: #b30021;
+}
+
+.custom-table .status.pending {
+  background-color: #ebc474;
+}
+
+.custom-table .status.shipped {
+  background-color: #6fcaea;
+}
+
+@media (max-width: 1000px) {
+  .custom-table td:not(:first-of-type) {
+    min-width: 12.1rem;
+  }
+}
+
+.custom-table thead th span.icon-arrow {
+  display: inline-block;
+  width: 1.3rem;
+  height: 1.3rem;
+  border-radius: 50%;
+  border: 1.4px solid transparent;
+  text-align: center;
+  font-size: 1rem;
+  margin-left: .5rem;
+  transition: .2s ease-in-out;
+}
+
+.custom-table thead th:hover span.icon-arrow {
+  border: 1.4px solid var(--cor-alerta);
+}
+
+.custom-table thead th:hover {
+  color: var(--cor-alerta);
+}
+
+.custom-table thead th.active span.icon-arrow {
+  background-color: var(--cor-alerta);
+  color: #fff;
+}
+
+.custom-table thead th.asc span.icon-arrow {
+  transform: rotate(180deg);
+}
+
+.custom-table thead th.active,
+.custom-table tbody td.active {
+  color: var(--cor-alerta);
+}
+
+.custom-table .export__file {
+  position: relative;
+}
+
+.custom-table .export__file .export__file-btn {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  background: #fff6 url(images/export.png) center / 80% no-repeat;
+  border-radius: 50%;
+  transition: .2s ease-in-out;
+}
+
+.custom-table .export__file .export__file-btn:hover {
+  background-color: #fff;
+  transform: scale(1.15);
+  cursor: pointer;
+}
+
+.custom-table .export__file input {
+  display: none;
+  color: var(--cor);
+}
+
+.custom-table .export__file .export__file-options {
+  position: absolute;
+  right: 0;
+  width: 12rem;
+  border-radius: .5rem;
+  overflow: hidden;
+  text-align: center;
+  opacity: 0;
+  transform: scale(.8);
+  transform-origin: top right;
+  box-shadow: 0 .2rem .5rem #0004;
+  transition: .2s;
+}
+
+.custom-table .export__file input:checked + .export__file-options {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 100;
+}
+
+.custom-table .export__file .export__file-options label {
+  display: block;
+  width: 100%;
+  padding: .6rem 0;
+  background-color: #f2f2f2;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  transition: .2s ease-in-out;
+}
+
+.custom-table .export__file .export__file-options label:first-of-type {
+  padding: 1rem 0;
+  background-color: #86e49d !important;
+}
+
+.custom-table .export__file .export__file-options label:hover {
+  transform: scale(1.05);
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.custom-table .export__file .export__file-options img {
+  width: 2rem;
+  height: auto;
+}
+
+.tabela_clientes thead tr th,
+.tabela_clientes tbody tr td   {
+  text-align: center;
+}
+
+.tabela_clientes tbody tr td a {
+  color: var(--cor-preta);
+}
+
+.tabela_clientes tbody tr td a:hover {
+  color: var(--cor-alerta);
+}
+
+.container__form-notas {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  place-items: start center;
+  gap: 2rem;
+} 

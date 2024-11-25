@@ -1,0 +1,354 @@
+/* ========================= DASHBOARD ========================= */
+
+.home {
+    position: relative;
+    top: 0;
+    left: 78px;
+    width: calc(100% - 78px);
+    min-height: 100vh;
+    background: var(--cor-fundo);
+    z-index: 6;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .sidebar.expand ~ .home {
+    left: 250px;
+    width: calc(100% - 250px);
+    transition: var(--transition);
+  }
+
+.container__form-notas {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    place-items: start center;
+    gap: 2rem;
+}
+
+.home__titulo {
+    text-align: center;
+    margin: 2rem 0rem;
+    font-size: var(--tamanho-fonte-gigante);
+    color: var(--cor-preta);
+}
+
+.home__titulo span {
+  color: var(--cor-principal);
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.container form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+}
+
+.container__form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.textAreaBox {
+  position: relative;
+  width: 100%;
+}
+
+.inputBox {
+  position: relative;
+  width: 250px;
+}
+
+.inputBox a {
+  text-decoration: none;
+  color: var(--cor-info-escura);
+  font-size: .8rem;
+}
+
+.inputBox a:hover {
+  color: var(--cor-preta);
+}
+
+.textAreaBox textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--cor-preta);
+  background: var(--cor-fundo);
+  border-radius: 5px;
+  outline: none;
+  color: var(--cor-preta);
+  font-size: 1rem;
+  transition: .5s;
+}
+
+.inputBox .input__form {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--cor-preta);
+  background: var(--cor-fundo);
+  border-radius: 5px;
+  outline: none;
+  color: var(--cor-preta);
+  font-size: 1rem;
+  transition: .5s;
+}
+
+.inputBox span, .textAreaBox span {
+  position: absolute;
+  left: 0;
+  padding: 10px;
+  pointer-events: none;
+  font-size: 1rem;
+  color: var(--cor-escura);
+  text-transform: uppercase;
+  transition: 0.5s;
+}
+
+.inputBox .input__form:valid ~ span,
+.inputBox .input__form:focus ~ span {
+  color: #128c3f;
+  transform: translateX(10px) translateY(-7px);
+  font-size: 0.65rem;
+  padding: 0 10px;
+  background: var(--cor-fundo);
+  border-left: 1px solid #128c3f;
+  border-right: 1px solid #128c3f;
+  letter-spacing: .2rem;
+}
+
+.textAreaBox textarea:valid ~ span,
+.textAreaBox textarea:focus ~ span  {
+  color: #128c3f;
+  transform: translateX(10px) translateY(-7px);
+  font-size: 0.65rem;
+  padding: 0 10px;
+  background: var(--cor-fundo);
+  border-left: 1px solid #128c3f;
+  border-right: 1px solid #128c3f;
+  letter-spacing: .2rem;
+}
+
+.valid ~ span {
+  color: #128c3f;
+  transform: translateX(10px) translateY(-7px);
+  font-size: 0.65rem;
+  padding: 0 10px;
+  background: var(--cor-fundo);
+  border-left: 1px solid #128c3f;
+  border-right: 1px solid #128c3f;
+  letter-spacing: .2rem;
+}
+
+.textAreaBox:nth-child(2) inp.input__formut:valid ~ span,
+.textAreaBox:nth-child(2) .input__form:focus ~ span {
+  background: #128c3f;
+  color: #1d2b3a;
+  border-radius: 2px;
+}
+
+.inputBox .input__form:valid,
+.inputBox .input__form:focus {
+  border: 1px solid #128c3f;
+}
+
+.textAreaBox textarea:valid,
+.textAreaBox textarea:focus {
+  border: 1px solid #128c3f;
+}
+
+@media screen and (max-width: 768px){
+  .container__form {
+    grid-template-columns: repeat(1, 1fr);
+    justify-content: center;
+    place-items: center;
+  }
+
+  .inputBox {
+    width: calc(100% - 60px);
+  }
+
+  .textAreaBox {
+    width: calc(100% - 60px);
+  }
+}
+
+/* TESTEEE */
+/* Adicione a classe .inputBox--active e estilos de transição para valorDAE */
+.inputBox #valorDAE ~ span,
+.inputBox #valorAnterior ~ span {
+  color: #128c3f;
+  transform: translateX(10px) translateY(-7px);
+  font-size: 0.65rem;
+  padding: 0 10px;
+  background: var(--cor-fundo);
+  border-left: 1px solid #128c3f;
+  border-right: 1px solid #128c3f;
+  letter-spacing: .2rem;
+}
+
+.inputBox #valorDAE,
+.inputBox #valorAnterior {
+  border: 1px solid #128c3f;
+}
+
+/* TESTEEE */
+
+.calculo__titulo {
+  color: var(--cor-preta);
+  font-size: 2rem;
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.form__btns {
+  display: flex;
+  justify-content: space-around;
+}
+
+.botao button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: .5rem;
+  color: var(--cor-preta);
+  font-weight: 700;
+  margin: 2rem 0;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.botao button:hover {
+  transform: scale(1.2);
+}
+
+.botao:nth-child(1) button {
+  background-color: red;
+}
+
+.botao:nth-child(2) button {
+  background-color: orange;
+}
+
+.botao:nth-child(3) button {
+  background-color: green;
+}
+
+.habilidade__modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, .5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: .3s;
+  text-align: center;
+}
+
+.habilidade__modal-content {
+  position: relative;
+  background-color: var(--cor-fundo);
+  padding: 1.5rem;
+  border-radius: .5rem;
+}
+
+.habilidade__modal-title {
+font-size: var(--tamanho-fonte-h3);
+font-weight: 600;
+margin-bottom: 1.5rem;
+}
+
+.modal_doenca_close, .habilidade__modal-close {
+position: absolute;
+top: 1rem;
+right: 1rem;
+font-size: 1.5rem;
+color: var(--cor-principal);
+cursor: pointer;
+}
+
+.habilidade__modal-icon {
+color: var(--cor-principal);
+margin-right: .25rem;
+font-size: 1.2rem;
+}
+
+/* modal ativo */
+
+.active-modal {
+opacity: 1;
+visibility: visible;
+}
+
+.cad__fornecedor-form {
+display: grid;
+grid-template-columns: repeat(1,1fr);
+gap: 1rem;
+}
+
+.cad__fornecedor-titulo {
+font-size: var(--tamanho-fonte-grande);
+margin-bottom: 1.5rem;
+color: var(--cor-escura);
+}
+
+.options {
+  display: none;
+  position: absolute;
+  margin-top: .6rem;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  max-height: 0;
+  overflow-y: auto;
+  width: 100%;
+  right: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  transition: max-height 0.3s ease, opacity 0.3s ease; /* Adicionando transições suaves */
+  padding: 10px;
+}
+
+.option {
+  margin-bottom: .5rem;
+}
+
+.custom-select.open .options, .custom-select_especie.open .options, .custom-select_medicamentos.open .options   {
+  display: block;
+  max-height: 150px; /* Ajuste conforme necessário */
+  opacity: 1;
+}
+
+.custom-select, .custom-select_especie, .custom-select_medicamentos {
+  cursor: pointer;
+}
+
+.custom-select a, .custom-select i, .custom-select_especie a, .custom-select_especie i, .custom-select_medicamentos a, .custom-select_medicamentos i {
+  font-size: var(--tamanho-fonte-pequena);
+  color: var(--cor-escura);
+  text-transform: uppercase;
+  padding: 4px;
+  text-decoration: none;
+  color: #000; /* Cor do texto, ajuste conforme necessário */
+}
+
+.arrow {
+  margin-left: 8px;
+  transition: transform 0.3s ease; /* Adicionando uma transição suave */
+}
+
+.custom-select.open .arrow, .custom-select_especie.open .arrow, .custom-select_medicamentos.open .arrow {
+  transform: rotate(180deg);
+}
